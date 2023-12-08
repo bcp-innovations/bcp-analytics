@@ -1,0 +1,17 @@
+{
+  "name": "bcp-analytics",
+  "version": "1.0.0-alpha.1",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "author": "Troy Kessler <troy@kyve.network>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.6.2"
+  }
+}
