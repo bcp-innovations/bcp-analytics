@@ -111,7 +111,7 @@ var default_1 = /** @class */ (function () {
     };
     default_1.prototype.identifyUser = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var userId;
+            var userId_1, err_1;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -119,31 +119,48 @@ var default_1 = /** @class */ (function () {
                         if (this.config.optOut) {
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, this.getUserId()];
+                        _a.label = 1;
                     case 1:
-                        userId = _a.sent();
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.getUserId()];
+                    case 2:
+                        userId_1 = _a.sent();
                         Object.keys(this.clients).forEach(function (key) { return __awaiter(_this, void 0, void 0, function () {
+                            var err_2;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
                                         if (this.config.debug) {
-                                            console.log("identify user ".concat(userId, " in ").concat(key));
+                                            console.log("identify user ".concat(userId_1, " in ").concat(key));
                                         }
-                                        return [4 /*yield*/, this.clients[key].identifyUser(userId)];
+                                        _a.label = 1;
                                     case 1:
+                                        _a.trys.push([1, 3, , 4]);
+                                        return [4 /*yield*/, this.clients[key].identifyUser(userId_1)];
+                                    case 2:
                                         _a.sent();
-                                        return [2 /*return*/];
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        err_2 = _a.sent();
+                                        console.error("failed to identify user in client", key, err_2);
+                                        return [3 /*break*/, 4];
+                                    case 4: return [2 /*return*/];
                                 }
                             });
                         }); });
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_1 = _a.sent();
+                        console.error("failed to identify", err_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     default_1.prototype.trackPage = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var userId;
+            var userId_2, err_3;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -151,31 +168,48 @@ var default_1 = /** @class */ (function () {
                         if (this.config.optOut) {
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, this.getUserId()];
+                        _a.label = 1;
                     case 1:
-                        userId = _a.sent();
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.getUserId()];
+                    case 2:
+                        userId_2 = _a.sent();
                         Object.keys(this.clients).forEach(function (key) { return __awaiter(_this, void 0, void 0, function () {
+                            var err_4;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
                                         if (this.config.debug) {
-                                            console.log("track page with user ".concat(userId, " in ").concat(key));
+                                            console.log("track page with user ".concat(userId_2, " in ").concat(key));
                                         }
-                                        return [4 /*yield*/, this.clients[key].trackPageEvent(userId)];
+                                        _a.label = 1;
                                     case 1:
+                                        _a.trys.push([1, 3, , 4]);
+                                        return [4 /*yield*/, this.clients[key].trackPageEvent(userId_2)];
+                                    case 2:
                                         _a.sent();
-                                        return [2 /*return*/];
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        err_4 = _a.sent();
+                                        console.error("failed to track page in client", key, err_4);
+                                        return [3 /*break*/, 4];
+                                    case 4: return [2 /*return*/];
                                 }
                             });
                         }); });
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_3 = _a.sent();
+                        console.error("failed to track page", err_3);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     default_1.prototype.trackCopy = function (content) {
         return __awaiter(this, void 0, void 0, function () {
-            var userId;
+            var userId_3, err_5;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -183,24 +217,41 @@ var default_1 = /** @class */ (function () {
                         if (this.config.optOut) {
                             return [2 /*return*/];
                         }
-                        return [4 /*yield*/, this.getUserId()];
+                        _a.label = 1;
                     case 1:
-                        userId = _a.sent();
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.getUserId()];
+                    case 2:
+                        userId_3 = _a.sent();
                         Object.keys(this.clients).forEach(function (key) { return __awaiter(_this, void 0, void 0, function () {
+                            var err_6;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
                                         if (this.config.debug) {
-                                            console.log("track copy with user ".concat(userId, " and content ").concat(content, " in ").concat(key));
+                                            console.log("track copy with user ".concat(userId_3, " and content ").concat(content, " in ").concat(key));
                                         }
-                                        return [4 /*yield*/, this.clients[key].trackCopyEvent(userId, content)];
+                                        _a.label = 1;
                                     case 1:
+                                        _a.trys.push([1, 3, , 4]);
+                                        return [4 /*yield*/, this.clients[key].trackCopyEvent(userId_3, content)];
+                                    case 2:
                                         _a.sent();
-                                        return [2 /*return*/];
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        err_6 = _a.sent();
+                                        console.error("failed to track copy in client", key, err_6);
+                                        return [3 /*break*/, 4];
+                                    case 4: return [2 /*return*/];
                                 }
                             });
                         }); });
-                        return [2 /*return*/];
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_5 = _a.sent();
+                        console.error("failed to track copy", err_5);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });

@@ -81,15 +81,23 @@ export default class {
       return;
     }
 
-    const userId = await this.getUserId();
+    try {
+      const userId = await this.getUserId();
 
-    Object.keys(this.clients).forEach(async (key: string) => {
-      if (this.config.debug) {
-        console.log(`identify user ${userId} in ${key}`);
-      }
+      Object.keys(this.clients).forEach(async (key: string) => {
+        if (this.config.debug) {
+          console.log(`identify user ${userId} in ${key}`);
+        }
 
-      await this.clients[key].identifyUser(userId);
-    });
+        try {
+          await this.clients[key].identifyUser(userId);
+        } catch (err) {
+          console.error("failed to identify user in client", key, err);
+        }
+      });
+    } catch (err) {
+      console.error("failed to identify", err);
+    }
   }
 
   public async trackPage() {
@@ -97,15 +105,23 @@ export default class {
       return;
     }
 
-    const userId = await this.getUserId();
+    try {
+      const userId = await this.getUserId();
 
-    Object.keys(this.clients).forEach(async (key: string) => {
-      if (this.config.debug) {
-        console.log(`track page with user ${userId} in ${key}`);
-      }
+      Object.keys(this.clients).forEach(async (key: string) => {
+        if (this.config.debug) {
+          console.log(`track page with user ${userId} in ${key}`);
+        }
 
-      await this.clients[key].trackPageEvent(userId);
-    });
+        try {
+          await this.clients[key].trackPageEvent(userId);
+        } catch (err) {
+          console.error("failed to track page in client", key, err);
+        }
+      });
+    } catch (err) {
+      console.error("failed to track page", err);
+    }
   }
 
   public async trackCopy(content: string) {
@@ -113,17 +129,25 @@ export default class {
       return;
     }
 
-    const userId = await this.getUserId();
+    try {
+      const userId = await this.getUserId();
 
-    Object.keys(this.clients).forEach(async (key: string) => {
-      if (this.config.debug) {
-        console.log(
-          `track copy with user ${userId} and content ${content} in ${key}`
-        );
-      }
+      Object.keys(this.clients).forEach(async (key: string) => {
+        if (this.config.debug) {
+          console.log(
+            `track copy with user ${userId} and content "${content}" in ${key}`
+          );
+        }
 
-      await this.clients[key].trackCopyEvent(userId, content);
-    });
+        try {
+          await this.clients[key].trackCopyEvent(userId, content);
+        } catch (err) {
+          console.error("failed to track copy in client", key, err);
+        }
+      });
+    } catch (err) {
+      console.error("failed to track copy", err);
+    }
   }
 
   private startPageListener() {
