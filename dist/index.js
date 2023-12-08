@@ -229,7 +229,7 @@ var default_1 = /** @class */ (function () {
                                 switch (_a.label) {
                                     case 0:
                                         if (this.config.debug) {
-                                            console.log("track copy with user ".concat(userId_3, " and content ").concat(content, " in ").concat(key));
+                                            console.log("track copy with user ".concat(userId_3, " and content \"").concat(content, "\" in ").concat(key));
                                         }
                                         _a.label = 1;
                                     case 1:
