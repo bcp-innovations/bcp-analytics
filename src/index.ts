@@ -177,7 +177,7 @@ export default class {
   }
 
   private startCopyListener() {
-    document.body.addEventListener("copy", () => {
+    document.addEventListener("copy", () => {
       const selection = document.getSelection();
 
       if (selection) {

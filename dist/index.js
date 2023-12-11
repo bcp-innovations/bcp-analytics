@@ -279,7 +279,7 @@ var default_1 = /** @class */ (function () {
     };
     default_1.prototype.startCopyListener = function () {
         var _this = this;
-        document.body.addEventListener("copy", function () {
+        document.addEventListener("copy", function () {
             var selection = document.getSelection();
             if (selection) {
                 _this.trackCopy(selection.toString());
