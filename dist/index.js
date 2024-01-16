@@ -256,6 +256,55 @@ var default_1 = /** @class */ (function () {
             });
         });
     };
+    default_1.prototype.trackCustom = function (event, properties) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userId_4, err_7;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (this.config.optOut) {
+                            return [2 /*return*/];
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, this.getUserId()];
+                    case 2:
+                        userId_4 = _a.sent();
+                        Object.keys(this.clients).forEach(function (key) { return __awaiter(_this, void 0, void 0, function () {
+                            var err_8;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        if (this.config.debug) {
+                                            console.log("track custom event with user ".concat(userId_4, " and event \"").concat(event, "\" in ").concat(key));
+                                        }
+                                        _a.label = 1;
+                                    case 1:
+                                        _a.trys.push([1, 3, , 4]);
+                                        return [4 /*yield*/, this.clients[key].trackCustomEvent(userId_4, event, properties)];
+                                    case 2:
+                                        _a.sent();
+                                        return [3 /*break*/, 4];
+                                    case 3:
+                                        err_8 = _a.sent();
+                                        console.error("failed to track custom event in client", key, err_8);
+                                        return [3 /*break*/, 4];
+                                    case 4: return [2 /*return*/];
+                                }
+                            });
+                        }); });
+                        return [3 /*break*/, 4];
+                    case 3:
+                        err_7 = _a.sent();
+                        console.error("failed to track custom event", err_7);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
     default_1.prototype.startPageListener = function () {
         var _this = this;
         this.trackPage();

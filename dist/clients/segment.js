@@ -131,6 +131,31 @@ var Segment = /** @class */ (function () {
             });
         });
     };
+    Segment.prototype.trackCustomEvent = function (userId, event, properties) {
+        return __awaiter(this, void 0, void 0, function () {
+            var payload, data;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        payload = {
+                            user_id: userId,
+                            ajs_anonymous_id: this.getAnonymousId(),
+                            path: window.location.href,
+                            referrer: document.referrer,
+                            event: event,
+                            properties: properties,
+                        };
+                        return [4 /*yield*/, axios_1.default.post("".concat(this.config.url, "/track"), payload, {
+                                withCredentials: true,
+                            })];
+                    case 1:
+                        data = (_a.sent()).data;
+                        this.setAnonymousId(data[constants_1.SEGMENT_ANONYMOUS_USER_ID]);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     Segment.prototype.setAnonymousId = function (id) {
         localStorage.setItem(constants_1.ANONYMOUS_USER_ID, id);
     };

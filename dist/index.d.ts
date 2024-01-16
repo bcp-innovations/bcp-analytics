@@ -12,6 +12,7 @@ export default class {
     identifyUser(): Promise<void>;
     trackPage(): Promise<void>;
     trackCopy(content: string): Promise<void>;
+    trackCustom(event: string, properties: object): Promise<void>;
     private startPageListener;
     private startCopyListener;
 }
