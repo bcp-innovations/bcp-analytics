@@ -13,6 +13,11 @@ interface IClient {
   identifyUser(userId: string): Promise<void>;
   trackPageEvent(userId: string): Promise<void>;
   trackCopyEvent(userId: string, content: string): Promise<void>;
+  trackCustomEvent(
+    userId: string,
+    event: string,
+    properties: object
+  ): Promise<void>;
 }
 
 type IGetUserId = () => Promise<string>;

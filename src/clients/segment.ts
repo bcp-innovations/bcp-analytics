@@ -58,6 +58,22 @@ export class Segment implements IClient {
     this.setAnonymousId(data[SEGMENT_ANONYMOUS_USER_ID]);
   }
 
+  async trackCustomEvent(userId: string, event: string, properties: object) {
+    const payload = {
+      user_id: userId,
+      ajs_anonymous_id: this.getAnonymousId(),
+      path: window.location.href,
+      referrer: document.referrer,
+      event,
+      properties,
+    };
+
+    const { data } = await axios.post(`${this.config.url}/track`, payload, {
+      withCredentials: true,
+    });
+    this.setAnonymousId(data[SEGMENT_ANONYMOUS_USER_ID]);
+  }
+
   private setAnonymousId(id: string) {
     localStorage.setItem(ANONYMOUS_USER_ID, id);
   }

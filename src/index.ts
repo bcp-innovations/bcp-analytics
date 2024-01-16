@@ -150,6 +150,32 @@ export default class {
     }
   }
 
+  public async trackCustom(event: string, properties: object) {
+    if (this.config.optOut) {
+      return;
+    }
+
+    try {
+      const userId = await this.getUserId();
+
+      Object.keys(this.clients).forEach(async (key: string) => {
+        if (this.config.debug) {
+          console.log(
+            `track custom event with user ${userId} and event "${event}" in ${key}`
+          );
+        }
+
+        try {
+          await this.clients[key].trackCustomEvent(userId, event, properties);
+        } catch (err) {
+          console.error("failed to track custom event in client", key, err);
+        }
+      });
+    } catch (err) {
+      console.error("failed to track custom event", err);
+    }
+  }
+
   private startPageListener() {
     this.trackPage();
 
